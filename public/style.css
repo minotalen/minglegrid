@@ -1,0 +1,67 @@
+body {
+  background-color: lightgray;
+  margin: 0px;
+  padding: 0px;
+}
+
+:root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+}
+
+#container {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+}
+
+.grid-item {
+  padding: 1em;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#occupied {
+  font-size: 0.9em;
+}
+#stats {
+  margin-right: 30px;
+  font-size: 1.4em;
+  float: right;
+  text-align: center;
+}
+
+.ui {
+  margin-right: 30px;
+  font-size: 1.4em;
+  float: right;
+  text-align: center;
+}
+
+.item {
+  position: relative;
+  width: 3em;
+  height: 3em;
+  text-align: center;
+  font-size: 2.3em;
+}
+
+.name {
+  text-align: center;
+  font-size: 0.7em;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.charge {
+  font-size: 0.5em;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.selected {
+  background-color: #3C9F50;
+  font-weight: bold;
+}
