@@ -29,11 +29,7 @@ function drawCharges(){
 function undo() {
   // update grid values from backup array
   if(undoCharges>=3 && gameState == "main") {
-    if(firstUndo) {
-      undoCharges -= 1;
-    } else {
-      undoCharges -= 1;
-    }
+    undoCharges -= 1;
     if(backup.length == 1) {
       for(let row = 0; row < Grid.rows; row++){
         for(let col = 0; col < Grid.cols; col++){

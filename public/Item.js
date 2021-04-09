@@ -1,7 +1,7 @@
 let usedItems = [];
 
-function createItem(init = "rand", charge = getRandomInt(4)) {
-  let types = [ "swap", "grow", "sum4", "sum6"];
+function createItem(init = "rand", charge = 0) {
+  let types = [ "swap", "shift", "sum", "shrink"];
   // let types = [ "shift", "swap", "grow", "sum4", "col", "sum", "pick", "sum6", "turn", "sort", "shrink"];
   // took out row
   let thisType;
@@ -10,10 +10,9 @@ function createItem(init = "rand", charge = getRandomInt(4)) {
   } else {
     thisType = types[init];
   }
-  if(thisType == "shift") charge += 2;
-  if(thisType == "pick" || thisType == "sum" || thisType == "sum6") charge -= 1;
-  if(thisType == "shrink" || thisType == "sort") charge -= 2;
-  charge = Math.max(charge, 1);
+  // if(thisType == "shift") charge += 2;
+  // if(thisType == "pick" || thisType == "sum" || thisType == "sum6") charge -= 1;
+  // if(thisType == "shrink" || thisType == "sort") charge -= 2;
   let newItem = {
     "charge": charge,
     "type": thisType,
@@ -52,28 +51,21 @@ let lastComboVal = 0;
 function isLeveled(value) {
   lastComboVal = value;
   if(score >= levelVal[level]) {
-    // selection = loadSelection(level);
-    // if (selection.length == 1) {
-    //   for(itm in Items) {
-    //     if(Items[itm]==0) {
-    //       Items[itm] = selection[0];
-    //       usedItems.push(itemIcon(Items[0].type)+ " " + Items[0].charge);
-    //       selection = 0;
-    //       break;
-    //     }
-    //     if (Items[itm].hasOwnProperty == "depleted") {
-    //       if(!Items[itm].depleted) {
-    //         Items[itm] = selection[0];
-    //         selection = 0;
-    //         break;
-    //       }
-    //     }
-    //   }
-      // if all three slots are full convert to charges
-      // if (selection != 0) {
-      //   let randItem = Math.floor(Math.random(selection.length));
-      //   Items[randItem].charge += selection[0].charge-1;
-      // }
+      if(level == 1) {
+        Items[1].charge += 1;
+      }
+      if(level == 2) {
+        Items[2].charge += 1;
+      }
+      for(let i = 2; i<level; i++) {
+        if(Math.random() > 0.25) {
+          let randItem = getRandomInt(Items.length);
+          Items[randItem].charge += 1;
+        }
+        if(Math.random() < 0.05) {
+          return;
+        }
+      }
       maxCharges -= 1;
       level++;
       isLeveled(value);
@@ -124,7 +116,9 @@ function initItem(items) {
   for(item = 0 ; item < items.length; item++) {
     items[item] = 0;
   }
-  items[0] = createItem("rand", getRandomInt(3)+1);
+  items[0] = createItem(0, 1);
+  items[1] = createItem(1, 0);
+  items[2] = createItem(3, 0);
   return items;
 }
 
