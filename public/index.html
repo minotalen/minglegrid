@@ -1,0 +1,43 @@
+<html>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script type="text/javascript" src="undo.js"></script>
+      <script type="text/javascript" src="meta.js"></script>
+      <script type="text/javascript" src="Item.js"></script>
+      <script type="text/javascript" src="grid.js"></script>
+      <script type="text/javascript" src="script.js"></script>
+      <script type="text/javascript" src="socket.js"></script>
+
+      <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+      <!-- <script>drawMap(mapp)</script> -->
+      <div id="stats">
+        <div id="occupied" style="visibility: hidden">
+          
+        </div>
+        <div class="total">
+          <b> Total grid value: </b>
+          <div id="total"> </div> </br>
+        </div>
+        <div class="top5">
+          <b> Highest 5 numbers: </b>
+          <div id="top5"> </div> </br>
+        </div>
+        <div class="weird">
+          <b> Weird numbers: </b>
+          <div id="weird"> </div> </br>
+        </div>
+          
+        </div> 
+      </div>
+      <div class="ui">
+        <b> score: </b>
+        <div id="score"> </div> </br>
+        <b> items: </b>
+        <div id="items"> </div> </br>
+      </div>
+    </body>
+</html>
